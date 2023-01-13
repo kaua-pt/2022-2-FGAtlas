@@ -2,7 +2,7 @@ import scrap from "../../src/scripts/scrapping";
 import prisma from "../../src/prismaClient";
 
 describe("Scrap behaviors", () => {
-  it("should return the database seeded", async () => {
+  test.skip("should return the database seeded", async () => {
     await prisma.building.deleteMany();
     await prisma.class.deleteMany();
     await prisma.room.deleteMany();

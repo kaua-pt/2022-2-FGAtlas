@@ -1,6 +1,10 @@
 import req from "supertest";
 import server from "../../src/server";
 
+beforeAll(() => {
+  
+})
+
 describe("Subject Routes test", () => {
   it("should list all subjects", async () => {
     const response = await req(server).get("/api/subject/");
