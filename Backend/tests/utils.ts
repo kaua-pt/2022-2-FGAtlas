@@ -37,6 +37,7 @@ async function seedDatabase() {
       latitude: 0,
       longitude: 0,
       buildingName: "UAC",
+      class: { connect: { id: 1 } },
     },
   });
   // adicionar classe na S1
