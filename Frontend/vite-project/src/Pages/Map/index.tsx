@@ -39,8 +39,6 @@ export default function Map() {
       lng: -48.04470473324397
     };
 
-    // console.log(subjectPlaceInfo.room)
-
     return (
       <div>
           {isLoaded ? ( 
@@ -72,7 +70,11 @@ export default function Map() {
               zoom={18}>
               {
                 subjectPlaceInfo.room != undefined ? 
-                <MarkerF position={{lat: subjectPlaceInfo.room[0].latitude, lng: subjectPlaceInfo.room[0].longitude}}/>
+                subjectPlaceInfo.room.map((info: any) => {
+                  return (
+                    <MarkerF position={{lat: info.latitude, lng: info.longitude}}/>
+                    )
+                })
                 :
                 <></>
               }
