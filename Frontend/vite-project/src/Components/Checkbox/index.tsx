@@ -4,14 +4,18 @@ import { FgAtlasContexts } from "../../Contexts";
 
 export default function CheckBox(infos: any) {
     const { label, style, subjectId, subjectName } = infos;
+    const { 
+        setSubjectChoosed, 
+        subjectChoosed, 
+        getSubjectLocalization,
+        setSubjectPlaceInfo
+     } = useContext(FgAtlasContexts);
     const [ checked, setChecked ] = useState(false);
-    const [ disableCheckbox, setDisableCheckbox ] = useState(false);
-    const { setSubjectChoosed, subjectChoosed } = useContext(FgAtlasContexts);
 
     const checkBoxStyle = {
-        color: '#E9932E',
+        color: '#black',
         '&.Mui-checked': {
-          color: '#E9932E',
+          color: 'green',
         },
         '&.Mui-disabled': {
             color: 'grey'
@@ -19,21 +23,21 @@ export default function CheckBox(infos: any) {
     }
 
     useEffect(() => {
-        if(subjectChoosed.name != null) {
-            setDisableCheckbox(true);
+        if(subjectChoosed.id == subjectId) {
+            setChecked(true);
+        } else {
+            setChecked(false);
         }
-        else {
-            setDisableCheckbox(false);
-        }
-    }, [subjectChoosed])
+    },[subjectChoosed.id]);
 
-    function checkCheckBox() {
-        setChecked(!checked)
-        if(!checked) {
-            setSubjectChoosed({name: subjectName, id: subjectId});
-        }
-        else {
+    function selectSubject() {
+        if(subjectChoosed.id == subjectId) {
             setSubjectChoosed({name: null, id: null});
+            setChecked(false);
+            setSubjectPlaceInfo({});
+        } else {
+            setSubjectChoosed({name: subjectName, id: subjectId});
+            getSubjectLocalization(subjectId);
         }
     }
 
@@ -44,10 +48,10 @@ export default function CheckBox(infos: any) {
         control={
             <Checkbox 
             sx={checkBoxStyle} 
-            disabled={subjectChoosed.id != subjectId && disableCheckbox ? true : false}
-            defaultChecked={false} 
+            disabled={false}
+            checked={checked} 
             onClick={() =>{
-                checkCheckBox()
+                selectSubject();
             }}
             />} 
         />

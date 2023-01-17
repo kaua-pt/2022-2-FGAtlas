@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import { Collapse,  } from "@mui/material";
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useState } from "react";
-import Checkbox from '@mui/material/Checkbox';
 import { TfiAngleDown, TfiAngleRight } from "react-icons/tfi";
 import FormGroup from '@mui/material/FormGroup';
 import CheckBox from "../Checkbox";
@@ -24,7 +23,7 @@ export default function SubjectInfos(infos: any) {
         boxSizing: 'border-box', 
         margin: '0px',
         color: 'white',
-        backgroundColor: '#545454',
+        backgroundColor: '#E9932E',
         padding: '10px',
         borderRadius: `${checked ? '5px 5px 0px 0px' : '5px'}`,
     }
@@ -38,7 +37,7 @@ export default function SubjectInfos(infos: any) {
 
     return (
         <style.Card>
-            <Box sx={{ width: '100%', height: 'auto', h1: {paddingLeft: '10px', fontSize: '16px'}}} >
+            <Box sx={{ width: '100%', height: 'auto', h1: { paddingLeft: '10px', fontSize: '16px' }}} >
                 <FormControlLabel
                     control={checked ? <TfiAngleDown /> : <TfiAngleRight />}
                     label={<h1>{props.name}</h1>}

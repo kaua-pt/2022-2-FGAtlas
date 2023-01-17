@@ -3,9 +3,9 @@ import styled from "styled-components";
 const Infos = styled.div`
     width: 100%;
     height: auto;
-    background-color: #464646;
     display: flex;
     flex-direction: row;
+    background-color: #FFDFB9;
     border: 2px ;
 
     .general_information {

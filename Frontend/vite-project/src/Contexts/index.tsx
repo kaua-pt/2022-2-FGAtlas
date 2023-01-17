@@ -22,7 +22,7 @@ export const FgAtlasProvider: React.FunctionComponent<ButtonProps> = ({ children
         .catch((e) => console.log(e.response.data))
     }
 
-     const getSubjectLocalization = (id:number) => {
+     const getSubjectLocalization = (id: number) => {
         axios.get(`${URL}/api/class/${id}`)
         .then((answer) => {
             console.log(answer.data);
@@ -39,7 +39,8 @@ export const FgAtlasProvider: React.FunctionComponent<ButtonProps> = ({ children
                 setSubjectChoosed,
                 subjectChoosed,
                 getSubjectLocalization,
-                subjectPlaceInfo
+                subjectPlaceInfo,
+                setSubjectPlaceInfo
             }}>
                 { children }
         </FgAtlasContexts.Provider>
