@@ -1,5 +1,5 @@
 import utils from "../../src/scripts/utils";
-
+// t
 describe("Integrity of arrays", () => {
   it("Should return a number greater than zero", () => {
     expect(utils.buildings.length).toBeGreaterThan(0);
