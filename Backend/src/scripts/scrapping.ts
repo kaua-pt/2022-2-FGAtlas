@@ -97,6 +97,9 @@ async function scrap() {
     "#turmasAbertas > table > tbody > tr > td:nth-child(4)",
     (el: any) => el.map((e: any) => e.innerText.trim())
   );
+  const matrizRef_cic: String[] = await page.$$eval("#turmasAbertas > table > tbody > tr", (el: any) =>
+    el.map((e: any) => e.className)
+  );
 
   //Repetidor
   var q;
@@ -106,15 +109,17 @@ async function scrap() {
   let nomesFiltrados_cic: String[] = [];
   let locaisFiltrados_cic: String[] = [];
   let horariosFiltrados_cic: String[] = [];
+  let matrizRefFiltrada_cic: String[] = [];
   //Looping para filtrar os dados (computação)
-  for (i = 0; i < todosLocais_cic.length; i++) {
-    if (todosLocais_cic[i].split('/')[1] != undefined) {
-      if (todosLocais_cic[i].split('/')[1].split(')')[0] == "FGA") {
-        codigoNomeFiltrado_cic.push(todosCodigoNome_cic[i]);
-        turmasFiltradas_cic.push(todasTurmas_cic[i]);
-        nomesFiltrados_cic.push(todosNomes_cic[i]);
-        locaisFiltrados_cic.push(todosLocais_cic[i]);
-        horariosFiltrados_cic.push(todosHorarios_cic[i]);
+  for (q = 0; q < todosLocais_cic.length; q++) {
+    if (todosLocais_cic[q].split('/')[1] != undefined) {
+      if (todosLocais_cic[q].split('/')[1].split(')')[0] == "FGA") {
+        codigoNomeFiltrado_cic.push(todosCodigoNome_cic[q]);
+        turmasFiltradas_cic.push(todasTurmas_cic[q]);
+        nomesFiltrados_cic.push(todosNomes_cic[q]);
+        locaisFiltrados_cic.push(todosLocais_cic[q]);
+        horariosFiltrados_cic.push(todosHorarios_cic[q]);
+        matrizRefFiltrada_cic.push(matrizRef_cic[q]);
       }
     }
   };
@@ -140,6 +145,9 @@ async function scrap() {
     "#turmasAbertas > table > tbody > tr > td:nth-child(4)",
     (el: any) => el.map((e: any) => e.innerText.trim())
   );
+  const matrizRef_mat: String[] = await page.$$eval("#turmasAbertas > table > tbody > tr", (el: any) =>
+    el.map((e: any) => e.className)
+  );
   //Repetidor
   var i;
   //Agora, declarando variáveis com os dados filtrados (matemática)
@@ -148,6 +156,7 @@ async function scrap() {
   let nomesFiltrados_mat: String[] = [];
   let locaisFiltrados_mat: String[] = [];
   let horariosFiltrados_mat: String[] = [];
+  let matrizRefFiltrada_mat: String[] = [];
   //Looping para filtrar os dados (matemática)
   for (i = 0; i < todosLocais_mat.length; i++) {
     if (todosLocais_mat[i].split(' ')[1] == "FGA") {
@@ -156,8 +165,23 @@ async function scrap() {
       nomesFiltrados_mat.push(todosNomes_mat[i]);
       locaisFiltrados_mat.push(todosLocais_mat[i]);
       horariosFiltrados_mat.push(todosHorarios_mat[i]);
+      matrizRefFiltrada_mat.push(matrizRef_mat[i]);
     };
   };
+
+  console.log(codigoNomeFiltrado_mat);
+  console.log(turmasFiltradas_mat);
+  console.log(nomesFiltrados_mat);
+  console.log(locaisFiltrados_mat);
+  console.log(horariosFiltrados_mat);
+  console.log(matrizRefFiltrada_mat);
+
+  console.log(codigoNomeFiltrado_cic);
+  console.log(turmasFiltradas_cic);
+  console.log(nomesFiltrados_cic);
+  console.log(locaisFiltrados_cic);
+  console.log(horariosFiltrados_cic);
+  console.log(matrizRefFiltrada_cic);
 
   try {
     await generatePrisma.generateBuildings();
