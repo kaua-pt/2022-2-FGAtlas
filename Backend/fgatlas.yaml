@@ -1,0 +1,6 @@
+version: '3'
+services:
+  fgaAtlas: 
+    image: criptoempi/fgatlas:1.0
+    ports: 
+      - 5432:5432
