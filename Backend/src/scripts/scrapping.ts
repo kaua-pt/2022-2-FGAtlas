@@ -1,4 +1,3 @@
-import { ownerDocument } from "@mui/material";
 import puppeteer from "puppeteer";
 import generatePrisma from "./generatePrisma";
 
@@ -52,27 +51,27 @@ async function scrap() {
   await page_cic.waitForSelector("#turmasAbertas > table > tbody > tr");
   await page_cic.waitForTimeout(4000);
 
-  const codigoNome: String[] = await page.$$eval(
+  var codigoNome: String[] = await page.$$eval(
     "#turmasAbertas > table > tbody > tr.agrupador > td > a > span",
     (el: any) => el.map((e: any) => e.innerHTML)
   );
-  const turma: String[] = await page.$$eval(
+  var turma: String[] = await page.$$eval(
     "#turmasAbertas > table > tbody > tr > td.turma",
     (el: any) => el.map((e: any) => e.innerHTML)
   );
-  const nome: String[] = await page.$$eval(
+  var nome: String[] = await page.$$eval(
     "#turmasAbertas > table > tbody > tr > td.nome",
     (el: any) => el.map((e: any) => e.innerHTML)
   );
-  const local: String[] = await page.$$eval(
+  var local: String[] = await page.$$eval(
     "#turmasAbertas > table > tbody > tr > td:nth-child(8)",
     (el: any) => el.map((e: any) => e.innerHTML)
   );
-  const horario: String[] = await page.$$eval(
+  var horario: String[] = await page.$$eval(
     "#turmasAbertas > table > tbody > tr > td:nth-child(4)",
     (el: any) => el.map((e: any) => e.innerText.trim())
   );
-  const matrizRef: String[] = await page.$$eval("#turmasAbertas > table > tbody > tr", (el: any) =>
+  var matrizRef: String[] = await page.$$eval("#turmasAbertas > table > tbody > tr", (el: any) =>
     el.map((e: any) => e.className)
   );
 
@@ -103,25 +102,31 @@ async function scrap() {
 
   //Repetidor
   var q;
+  var j;
   //Agora, declarando variáveis com os dados filtrados (computação)
-  let codigoNomeFiltrado_cic: String[] = [];
-  let turmasFiltradas_cic: String[] = [];
-  let nomesFiltrados_cic: String[] = [];
-  let locaisFiltrados_cic: String[] = [];
-  let horariosFiltrados_cic: String[] = [];
-  let matrizRefFiltrada_cic: String[] = [];
+  var codigoNomeFiltrado_cic: String[] = ["CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES", "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES",
+    "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES", "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES",
+    "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES"];
+  var turmasFiltradas_cic: String[] = [];
+  var nomesFiltrados_cic: String[] = [];
+  var locaisFiltrados_cic: String[] = [];
+  var horariosFiltrados_cic: String[] = [];
+  var matrizRefFiltrada_cic: String[] = ["agrupador", "linhaPar", "linhaImpar", "linhaPar",
+    "linhaImpar", "linhaPar"];
   //Looping para filtrar os dados (computação)
   for (q = 0; q < todosLocais_cic.length; q++) {
     if (todosLocais_cic[q].split('/')[1] != undefined) {
       if (todosLocais_cic[q].split('/')[1].split(')')[0] == "FGA") {
-        codigoNomeFiltrado_cic.push(todosCodigoNome_cic[q]);
         turmasFiltradas_cic.push(todasTurmas_cic[q]);
         nomesFiltrados_cic.push(todosNomes_cic[q]);
         locaisFiltrados_cic.push(todosLocais_cic[q]);
         horariosFiltrados_cic.push(todosHorarios_cic[q]);
-        matrizRefFiltrada_cic.push(matrizRef_cic[q]);
       }
     }
+  };
+  var locais_cic: String[] = [];
+  for (j = 0; j < locaisFiltrados_cic.length; j++) {
+    locais_cic.push(locaisFiltrados_cic[j].replace(/-/g, ""))
   };
 
   //Primeiro, declarando variáveis com todos os dados (matemática)
@@ -151,43 +156,55 @@ async function scrap() {
   //Repetidor
   var i;
   //Agora, declarando variáveis com os dados filtrados (matemática)
-  let codigoNomeFiltrado_mat: String[] = [];
-  let turmasFiltradas_mat: String[] = [];
-  let nomesFiltrados_mat: String[] = [];
-  let locaisFiltrados_mat: String[] = [];
-  let horariosFiltrados_mat: String[] = [];
-  let matrizRefFiltrada_mat: String[] = [];
+  var codigoNomeFiltrado_mat: String[] = ["MAT0025 - CÁLCULO 1", "MAT0025 - CÁLCULO 1", "MAT0025 - CÁLCULO 1",
+    "MAT0026 - CÁLCULO 2", "MAT0026 - CÁLCULO 2", "MAT0026 - CÁLCULO 2",
+    "MAT0027 - CÁLCULO 3", "MAT0027 - CÁLCULO 3", "MAT0031 - INTRODUÇÃO A ALGEBRA LINEAR",
+    "MAT0031 - INTRODUÇÃO A ALGEBRA LINEAR", "MAT0031 - INTRODUÇÃO A ALGEBRA LINEAR"];
+  var turmasFiltradas_mat: String[] = [];
+  var nomesFiltrados_mat: String[] = [];
+  var locaisFiltrados_mat: String[] = [];
+  var horariosFiltrados_mat: String[] = [];
+  var matrizRefFiltrada_mat: String[] = ["agrupador", "linhaImpar", "linhaPar", "linhaImpar",
+    "agrupador", "linhaImpar", "linhaPar", "linhaImpar",
+    "agrupador", "linhaImpar", "linhaPar", "agrupador", "linhaImpar",
+    "linhaPar", "linhaImpar"];
   //Looping para filtrar os dados (matemática)
   for (i = 0; i < todosLocais_mat.length; i++) {
     if (todosLocais_mat[i].split(' ')[1] == "FGA") {
-      codigoNomeFiltrado_mat.push(todosCodigoNome_mat[i]);
       turmasFiltradas_mat.push(todasTurmas_mat[i]);
       nomesFiltrados_mat.push(todosNomes_mat[i]);
       locaisFiltrados_mat.push(todosLocais_mat[i]);
       horariosFiltrados_mat.push(todosHorarios_mat[i]);
-      matrizRefFiltrada_mat.push(matrizRef_mat[i]);
     };
   };
 
-  console.log(codigoNomeFiltrado_mat);
-  console.log(turmasFiltradas_mat);
-  console.log(nomesFiltrados_mat);
-  console.log(locaisFiltrados_mat);
-  console.log(horariosFiltrados_mat);
-  console.log(matrizRefFiltrada_mat);
+  //Concatenando os novos arrays de materias com os antigos
+  var codigoNomeGeral: String[] = [];
+  var matrizRefGeral: String[] = [];
+  var nomeGeral: String[] = [];
+  var localGeral: String[] = [];
+  var turmaGeral: String[] = [];
+  var horarioGeral: String[] = [];
 
-  console.log(codigoNomeFiltrado_cic);
-  console.log(turmasFiltradas_cic);
-  console.log(nomesFiltrados_cic);
-  console.log(locaisFiltrados_cic);
-  console.log(horariosFiltrados_cic);
-  console.log(matrizRefFiltrada_cic);
+  codigoNomeGeral = codigoNome.concat(codigoNomeFiltrado_mat);
+  matrizRefGeral = matrizRef.concat(matrizRefFiltrada_mat);
+  nomeGeral = nome.concat(nomesFiltrados_mat);
+  localGeral = local.concat(locaisFiltrados_mat);
+  turmaGeral = turma.concat(turmasFiltradas_mat);
+  horarioGeral = horario.concat(horariosFiltrados_mat);
+
+  codigoNomeGeral = codigoNomeGeral.concat(codigoNomeFiltrado_cic);
+  matrizRefGeral = matrizRefGeral.concat(matrizRefFiltrada_cic);
+  nomeGeral = nomeGeral.concat(nomesFiltrados_cic);
+  localGeral = localGeral.concat(locais_cic);
+  localGeral = turmaGeral.concat(turmasFiltradas_cic);
+  horarioGeral = horarioGeral.concat(horariosFiltrados_cic);
 
   try {
     await generatePrisma.generateBuildings();
     await generatePrisma.generateRooms();
-    await generatePrisma.generateSubject(codigoNome);
-    await generatePrisma.generateClass(codigoNome, matrizRef, nome, local, turma, horario);
+    await generatePrisma.generateSubject(codigoNomeGeral);
+    await generatePrisma.generateClass(codigoNomeGeral, matrizRefGeral, nomeGeral, localGeral, turmaGeral, horarioGeral);
   } catch (e) {
     /* eslint-disable*/
     console.log("Dados já cadastrados");
