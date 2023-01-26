@@ -1,6 +1,6 @@
 // room service
-import roomRepository from "../repositories/roomRepository";
 import HttpError from "http-errors";
+import roomRepository from "../repositories/roomRepository";
 
 const getOneRoom = async (identification: string) => {
     const room = await roomRepository.getOneRoom(identification);
@@ -14,7 +14,7 @@ const getOneRoom = async (identification: string) => {
 const getAllRooms = async () => {
     const room = await roomRepository.getAllRooms();
 
-    
+
 
     return room;
 };
