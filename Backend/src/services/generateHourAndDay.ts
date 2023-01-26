@@ -18,11 +18,11 @@ const parseDay = (horario: string) => {
       const days = sigla.slice(0, index);
       const period = sigla[index];
       const hour = sigla.slice(index + 1);
-      little.push(days, period, hour); // dia padrao
+      little.push(days, period, hour);
       aux.push(little);
     }
 
-    return aux; // total
+    return aux;
   });
 
   const day = [];
