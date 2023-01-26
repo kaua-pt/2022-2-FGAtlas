@@ -1,10 +1,8 @@
 import { RequestHandler } from "express";
 import subjectService from "../services/subjectService";
 
-const readSubjects: RequestHandler = async (req, res) => {
+const readSubjects: RequestHandler = async (req, res) => res.json(await subjectService.getAllSubjects());
 
-  return res.json(await subjectService.getAllSubjects());
-};
 
 const readOneSubject: RequestHandler = async (req, res) => {
   const { codeId } = req.params;

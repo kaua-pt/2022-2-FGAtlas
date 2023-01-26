@@ -1,6 +1,7 @@
 // subject service
-import subjectRepository from "../repositories/subjectRepository";
 import HttpError from "http-errors";
+import subjectRepository from "../repositories/subjectRepository";
+
 
 const getOneSubject = async (codeId: string) => {
     const subject = await subjectRepository.getOneSubject(codeId);

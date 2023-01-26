@@ -2,10 +2,8 @@ import { RequestHandler } from "express";
 import roomService from "../services/roomService";
 
 
-const readRoom: RequestHandler = async (req, res) => {
+const readRoom: RequestHandler = async (req, res) => res.json(await roomService.getAllRooms());
 
-  return res.json(await roomService.getAllRooms());
-};
 
 const readOneRoom: RequestHandler = async (req, res) => {
   const { identification } = req.params;

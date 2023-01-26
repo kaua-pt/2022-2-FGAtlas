@@ -1,4 +1,5 @@
 import puppeteer from "puppeteer";
+import Utils from "../../tests/Utils";
 import generatePrisma from "./generatePrisma";
 
 /* eslint-disable*/
@@ -104,9 +105,7 @@ async function scrap() {
   var q;
   var j;
   //Agora, declarando variáveis com os dados filtrados (computação)
-  var codigoNomeFiltrado_cic: String[] = ["CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES", "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES",
-    "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES", "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES",
-    "CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES"];
+  var codigoNomeFiltrado_cic: String[] = ["CIC0004 - ALGORITMOS E PROGRAMAÇÃO DE COMPUTADORES"];
   var turmasFiltradas_cic: String[] = [];
   var nomesFiltrados_cic: String[] = [];
   var locaisFiltrados_cic: String[] = [];
@@ -156,10 +155,9 @@ async function scrap() {
   //Repetidor
   var i;
   //Agora, declarando variáveis com os dados filtrados (matemática)
-  var codigoNomeFiltrado_mat: String[] = ["MAT0025 - CÁLCULO 1", "MAT0025 - CÁLCULO 1", "MAT0025 - CÁLCULO 1",
-    "MAT0026 - CÁLCULO 2", "MAT0026 - CÁLCULO 2", "MAT0026 - CÁLCULO 2",
-    "MAT0027 - CÁLCULO 3", "MAT0027 - CÁLCULO 3", "MAT0031 - INTRODUÇÃO A ALGEBRA LINEAR",
-    "MAT0031 - INTRODUÇÃO A ALGEBRA LINEAR", "MAT0031 - INTRODUÇÃO A ALGEBRA LINEAR"];
+  var codigoNomeFiltrado_mat: String[] = ["MAT0025 - CÁLCULO 1",
+    "MAT0026 - CÁLCULO 2",
+    "MAT0027 - CÁLCULO 3", "MAT0031 - INTRODUÇÃO A ALGEBRA LINEAR"];
   var turmasFiltradas_mat: String[] = [];
   var nomesFiltrados_mat: String[] = [];
   var locaisFiltrados_mat: String[] = [];
@@ -186,19 +184,21 @@ async function scrap() {
   var turmaGeral: String[] = [];
   var horarioGeral: String[] = [];
 
-  codigoNomeGeral = codigoNome.concat(codigoNomeFiltrado_mat);
-  matrizRefGeral = matrizRef.concat(matrizRefFiltrada_mat);
-  nomeGeral = nome.concat(nomesFiltrados_mat);
-  localGeral = local.concat(locaisFiltrados_mat);
-  turmaGeral = turma.concat(turmasFiltradas_mat);
-  horarioGeral = horario.concat(horariosFiltrados_mat);
+  codigoNomeGeral = codigoNome.concat(codigoNomeFiltrado_mat);// fga - materia
+  matrizRefGeral = matrizRef.concat(matrizRefFiltrada_mat); // ..
+  nomeGeral = nome.concat(nomesFiltrados_mat);// prof
+  localGeral = local.concat(locaisFiltrados_mat);//fga s1 s2
+  turmaGeral = turma.concat(turmasFiltradas_mat);// 1,1,2
+  horarioGeral = horario.concat(horariosFiltrados_mat);//34m56
 
   codigoNomeGeral = codigoNomeGeral.concat(codigoNomeFiltrado_cic);
   matrizRefGeral = matrizRefGeral.concat(matrizRefFiltrada_cic);
   nomeGeral = nomeGeral.concat(nomesFiltrados_cic);
   localGeral = localGeral.concat(locais_cic);
-  localGeral = turmaGeral.concat(turmasFiltradas_cic);
+  turmaGeral = turmaGeral.concat(turmasFiltradas_cic);
   horarioGeral = horarioGeral.concat(horariosFiltrados_cic);
+
+  await Utils.resetDatabase();
 
   try {
     await generatePrisma.generateBuildings();
