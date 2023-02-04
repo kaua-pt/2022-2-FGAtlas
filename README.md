@@ -94,21 +94,10 @@ Para executar o backend:
 ```
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
-	
-2. 	Inicie o Postgres com o nome do banco de desenvolvimento
-```
-createdb FGAtlas_dev
-```
 
 3. 	Instale todas as dependências do repositório com:
 ```
 npm install
-```
-	
-4.	Faça as migrations do banco de dados com: 
-
-```
-npm run migrate_dev
 ```
 
 5.	Inicie a aplicação com o comando:
@@ -143,10 +132,6 @@ Para executar os testes do backend:
 1. 	Clone o repositório
 ```
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
-```
-2. 	Inicie o Postgres com o nome do banco de desenvolvimento
-```
-createdb FGAtlas_tests
 ```
 
 3. 	Instale todas as dependências do repositório com:
