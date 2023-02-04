@@ -146,8 +146,28 @@ npm install
 ```
 npm run test
 ```
-Para executar os testes do frontend:
 
+Para executar os testes do frontend:
+1. 	Clone o repositório
+```
+git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
+```
+
+2. Vá para a pasta do vite
+```
+cd ./vite-project
+```
+
+3. Instale todas as dependências com:
+```
+npm install
+```
+
+4. Execute no terminal:
+
+```
+npm run test
+```
 
 ## :orange_book: Backlog do produto
 
