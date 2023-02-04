@@ -133,15 +133,21 @@ Para executar os testes do backend:
 ```
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
+2. 	Crie um novo banco de dados para testes com:
+```
+dbcreate fgatlasdb_test
+```
 
-2. 	Instale todas as dependências do repositório com:
+3. 	Instale todas as dependências do repositório com:
 ```
 npm install
 ```
-3. 	Inicie os testes com:
+4. 	Inicie os testes com:
 ```
 npm run test
 ```
+Para executar os testes do backend:
+
 
 ## :orange_book: Backlog do produto
 
