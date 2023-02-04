@@ -146,7 +146,7 @@ npm install
 ```
 npm run test
 ```
-Para executar os testes do backend:
+Para executar os testes do frontend:
 
 
 ## :orange_book: Backlog do produto
