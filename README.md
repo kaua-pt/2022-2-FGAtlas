@@ -95,12 +95,12 @@ Para executar o backend:
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
 
-3. 	Instale todas as dependências do repositório com:
+2. 	Instale todas as dependências do repositório com:
 ```
 npm install
 ```
 
-5.	Inicie a aplicação com o comando:
+3.	Inicie a aplicação com o comando:
 
 ```
 npm run start
@@ -134,11 +134,11 @@ Para executar os testes do backend:
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
 
-3. 	Instale todas as dependências do repositório com:
+2. 	Instale todas as dependências do repositório com:
 ```
 npm install
 ```
-4. 	Inicie os testes com:
+3. 	Inicie os testes com:
 ```
 npm run test
 ```
