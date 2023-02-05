@@ -211,7 +211,7 @@ se deve comportar para um bom andamento do projeto, leia nosso [Código de Condu
         <td align="center">
             <a href="https://github.com/kaua-pt">
                 <img style="border-radius: 50%;" src="https://github.com/kaua-pt.png" width="150px;"/>
-                <h5 class="text-center">Kauã Vinícius</h5>
+                <h5 class="text-center">Kauã Vinícius ✠ </h5>
             </a>
         </td>
         <td align="center">
