@@ -8,11 +8,11 @@ import FormGroup from '@mui/material/FormGroup';
 import CheckBox from "../Checkbox";
 
 
-export default function SubjectInfos(infos: any) {
+export default function BuildingsInfos(infos: any) {
     const [ checked, setChecked ] = useState(false);
 
     const { props } = infos;
-    const { Class } = props;
+    const { rooms } = props;
 
     const handleChange = () => {
         setChecked(!checked);
@@ -46,16 +46,15 @@ export default function SubjectInfos(infos: any) {
                 />
                 <Box sx={{width:'100%', display: 'flex'}}>
                     <Collapse in={checked} sx={{ width: '100%'}}>
-                        {
-                            Class.map((infos: any) => {return (
-                                <style.Infos>
+                    {
+                            rooms.map((infos: any, i: number) => {return (
+                                <style.Infos key={i}>
                                     <FormGroup sx={{ width: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                        <CheckBox subjectName={props.name} subjectId={infos.id} style={formGroupSyle} label={undefined} />
+                                        <CheckBox buidingName={props.name} buildingId={infos.identification} style={formGroupSyle} label={undefined} />
                                     </FormGroup>
                                     <div className="general_information">
-                                        <p>Professor: <b>{infos.teacher}</b></p>
-                                        <p className="end">Horário: <b>{infos.timeAndDay}</b></p>
-                                        <p className="end">Turma: <b>{infos.idClass}</b></p>
+                                        <p>Sala: <b>{infos.identification}</b></p>
+                                        <p className="end">Piso: <b>{infos.level}</b></p>
                                     </div>
                                 </style.Infos>
                             )})

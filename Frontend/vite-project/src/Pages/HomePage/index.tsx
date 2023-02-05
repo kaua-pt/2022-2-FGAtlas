@@ -38,7 +38,10 @@ const navigate = useNavigate();
 
                         <ThemeProvider theme={buttonTheme}>
                             <Stack direction="row" spacing={2}>
-                                <Button onClick={() => navigate('/subjects')} variant="contained" sx={muiStyle.style.button}>Encontrar sala</Button>
+                                <Button onClick={() => navigate('/map')} variant="contained" sx={muiStyle.style.button}>Encontrar sala</Button>  
+                            </Stack>
+                            <Stack direction="row" spacing={2}>
+                                <Button onClick={() => navigate('/map-buildings')}variant='contained' sx={muiStyle.style.button}>ENCONTRAR PRÉDIO</Button>
                             </Stack>
                         </ThemeProvider>
                     </div>
@@ -47,11 +50,11 @@ const navigate = useNavigate();
             <Style.Container>
         <Style.ContainerAbout>
             <Typography sx={muiStyle.style.firstText}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores similique nam dolore, reiciendis ut, repellendus itaque iste veniam non vitae laborum voluptate quaerat quae nulla id quia quo a tempore.
+                FGAtlas é um projeto web que fornece a localização dos prédios e salas da FGA, a fim de auxiliar calouros e veteranos a encontrarem os locais onde terão suas aulas. A ideia surgiu após a equipe realizar, em grupos da faculdade, uma pesquisa via forms na qual questionava os estudantes qual era a maior dificuldade dos mesmos no campus, a grande parte das respostas foram direcionadas à questões envolvendo localização. Nosso time de desenvolvimento:
             </Typography>
             <Style.DevelopersContainer>
-                {arrayImagesDevelopers.map((image:any, index:number) => 
-                  <DevelopersInfo image={image}></DevelopersInfo>
+                {arrayImagesDevelopers.map((obj:any, index:number) => 
+                  <DevelopersInfo image={obj.image} link={obj.link}></DevelopersInfo>
                 )}
             </Style.DevelopersContainer>
             </Style.ContainerAbout>

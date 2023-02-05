@@ -4,6 +4,7 @@ import { FgAtlasContexts } from "../../Contexts"
 import styled from 'styled-components';
 import Loading from '../../Components/Loading';
 import SubjectInfos from '../../Components/SubjectsInfos';
+import BuildingsInfos from '../../Components/BuildingsInfo';
 
 interface room {
   identification:string ,
@@ -18,15 +19,15 @@ const containerStyle = {
   height: '100vh'
 };
 
-export default function Map() {
+export default function MapBuilding() {
     const { 
-      subjectPlaceInfo, 
-      getSubjects, 
-      subjectsInfos, 
+      getBuildings,
+      buildingsInfo,
+      buildingPlaceInfo,
     } = useContext(FgAtlasContexts);
 
     useEffect(() => {
-      getSubjects();
+      getBuildings();
     },[]);  
 
     const {isLoaded} = useJsApiLoader({
@@ -44,13 +45,13 @@ export default function Map() {
           {isLoaded ? ( 
           <Container>
             <SideBar>
-              <p>Selecione a turma para ver no mapa:</p>
+              <p>Selecione o prédio para ver no mapa:</p>
                   <List>
-                    {subjectsInfos.length != undefined ?
+                    {buildingsInfo.length != undefined ?
                         (
-                            subjectsInfos.map((info: any) => {
+                            buildingsInfo.map((info: any, i: number) => {
                                 return (
-                                    <SubjectInfos props={info}/>
+                                    <BuildingsInfos props={info} key={i}/>
                                 )
                             })
                         )
@@ -69,12 +70,12 @@ export default function Map() {
               center={center}
               zoom={18}>
               {
-                subjectPlaceInfo.room != undefined ? 
-                subjectPlaceInfo.room.map((info: any) => {
-                  console.log(info)
-                  return (
-                    <MarkerF position={{lat: info.latitude, lng: info.longitude}}/>
-                    )
+                buildingPlaceInfo.length != undefined ? 
+                buildingPlaceInfo.map((info: any) => {
+                    return (
+                        <MarkerF position={{lat: info.latitude, lng: info.longitude}}/>
+                        )
+                  
                 })
                 :
                 <></>
