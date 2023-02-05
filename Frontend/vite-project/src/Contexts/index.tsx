@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
-const URL = "http://localhost:8080"
+const URL = "https://backend-fgatlas.onrender.com"
 
 export const FgAtlasContexts = React.createContext<any | null>(null);;
 
@@ -15,6 +15,10 @@ export const FgAtlasProvider: React.FunctionComponent<ButtonProps> = ({ children
     const [ subjectsInfos, setSubjectsInfos ] = useState({});
     const [ subjectChoosed, setSubjectChoosed ] = useState({name: null, id: null})
     const [ subjectPlaceInfo, setSubjectPlaceInfo ] = useState({});
+    const [buildingsInfo, setBuildingInfo] = useState({});
+    const [ buildingChoosed, setBuildingChoosed ] = useState({name: null});
+    const [ buildingPlaceInfo, setBuildingPlaceInfo ] = useState({});
+    console.log(buildingPlaceInfo)
 
     const getSubjects = () => {
         axios.get(`${URL}/api/subject/`)
@@ -31,6 +35,20 @@ export const FgAtlasProvider: React.FunctionComponent<ButtonProps> = ({ children
         .catch((e)=>{console.log(e.response.data)})
     }
 
+    const getBuildings = () => {
+      axios.get(`${URL}/api/building/`)
+        .then((answer) => {setBuildingInfo(answer.data)})
+        .catch((e) => console.log(e.response.data))
+    }
+
+    const getBuildingLocalization = (name: string) => {
+        axios.get(`${URL}/api/rooms/${name}`)
+        .then((answer) => {
+            setBuildingPlaceInfo(answer.data)
+           })
+        .catch((e)=>{console.log(e.response.data)})
+    }
+
     return (
         <FgAtlasContexts.Provider
             value = {{
@@ -40,7 +58,15 @@ export const FgAtlasProvider: React.FunctionComponent<ButtonProps> = ({ children
                 subjectChoosed,
                 getSubjectLocalization,
                 subjectPlaceInfo,
-                setSubjectPlaceInfo
+                setSubjectPlaceInfo,
+                getBuildings,
+                buildingsInfo,
+                setBuildingInfo,
+                buildingChoosed,
+                setBuildingChoosed,
+                buildingPlaceInfo,
+                setBuildingPlaceInfo,
+                getBuildingLocalization,
             }}>
                 { children }
         </FgAtlasContexts.Provider>

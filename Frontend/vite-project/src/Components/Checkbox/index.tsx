@@ -3,12 +3,17 @@ import { useContext, useEffect, useState } from "react";
 import { FgAtlasContexts } from "../../Contexts";
 
 export default function CheckBox(infos: any) {
-    const { label, style, subjectId, subjectName } = infos;
+    const { label, style, subjectId, subjectName, buildingName, buildingId } = infos;
+
     const { 
         setSubjectChoosed, 
         subjectChoosed, 
         getSubjectLocalization,
-        setSubjectPlaceInfo
+        setSubjectPlaceInfo,
+        buildingChoosed,
+        setBuildingChoosed,
+        getBuildingLocalization,
+        setBuildingPlaceInfo,
      } = useContext(FgAtlasContexts);
     const [ checked, setChecked ] = useState(false);
 
@@ -21,14 +26,15 @@ export default function CheckBox(infos: any) {
             color: 'grey'
         }
     }
-
     useEffect(() => {
-        if(subjectChoosed.id == subjectId) {
+        if(subjectChoosed.id == subjectId && buildingId == undefined) {   
             setChecked(true);
-        } else {
+        } else if( buildingChoosed.name == buildingId && subjectId == undefined) {
+            setChecked(true);
+        }else {
             setChecked(false);
         }
-    },[subjectChoosed.id]);
+    },[subjectChoosed.id, buildingChoosed.name]);
 
     function selectSubject() {
         if(subjectChoosed.id == subjectId) {
@@ -38,6 +44,19 @@ export default function CheckBox(infos: any) {
         } else {
             setSubjectChoosed({name: subjectName, id: subjectId});
             getSubjectLocalization(subjectId);
+        }
+    }
+
+    function selectBuilding() {
+        console.log(buildingChoosed)
+        if(buildingChoosed.name == buildingId) {
+            setBuildingChoosed({name: null});
+            setChecked(false);
+            setBuildingPlaceInfo({});
+        } else {
+            setBuildingChoosed({name: buildingId});
+            setBuildingPlaceInfo({});
+            getBuildingLocalization(buildingId);
         }
     }
 
@@ -51,7 +70,7 @@ export default function CheckBox(infos: any) {
             disabled={false}
             checked={checked} 
             onClick={() =>{
-                selectSubject();
+                selectSubject(); selectBuilding();
             }}
             />} 
         />

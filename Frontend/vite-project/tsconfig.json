@@ -16,6 +16,8 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src", "config"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "lib": ["WebWorker"],
+  "types": ["webpack-env", "vite/client"]
 }

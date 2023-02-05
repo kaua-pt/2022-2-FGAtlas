@@ -38,7 +38,10 @@ const navigate = useNavigate();
 
                         <ThemeProvider theme={buttonTheme}>
                             <Stack direction="row" spacing={2}>
-                                <Button onClick={() => navigate('/map')} variant="contained" sx={muiStyle.style.button}>Encontrar sala</Button>
+                                <Button onClick={() => navigate('/map')} variant="contained" sx={muiStyle.style.button}>Encontrar sala</Button>  
+                            </Stack>
+                            <Stack direction="row" spacing={2}>
+                                <Button onClick={() => navigate('/map-buildings')}variant='contained' sx={muiStyle.style.button}>ENCONTRAR PRÉDIO</Button>
                             </Stack>
                         </ThemeProvider>
                     </div>
