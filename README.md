@@ -5,6 +5,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
+[![maintainability][maintainability-shield]][maintainability-url]
 [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -93,24 +94,13 @@ Para executar o backend:
 ```
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
-	
-2. 	Inicie o Postgres com o nome do banco de desenvolvimento
-```
-createdb FGAtlas_dev
-```
 
-3. 	Instale todas as dependências do repositório com:
+2. 	Instale todas as dependências do repositório com:
 ```
 npm install
 ```
-	
-4.	Faça as migrations do banco de dados com: 
 
-```
-npm run migrate_dev
-```
-
-5.	Inicie a aplicação com o comando:
+3.	Inicie a aplicação com o comando:
 
 ```
 npm run start
@@ -143,9 +133,9 @@ Para executar os testes do backend:
 ```
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
-2. 	Inicie o Postgres com o nome do banco de desenvolvimento
+2. 	Crie um novo banco de dados para testes com:
 ```
-createdb FGAtlas_dev
+dbcreate fgatlasdb_test
 ```
 
 3. 	Instale todas as dependências do repositório com:
@@ -153,6 +143,28 @@ createdb FGAtlas_dev
 npm install
 ```
 4. 	Inicie os testes com:
+```
+npm run test
+```
+
+Para executar os testes do frontend:
+1. 	Clone o repositório
+```
+git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
+```
+
+2. Vá para a pasta do vite
+```
+cd ./vite-project
+```
+
+3. Instale todas as dependências com:
+```
+npm install
+```
+
+4. Execute no terminal:
+
 ```
 npm run test
 ```
@@ -199,7 +211,7 @@ se deve comportar para um bom andamento do projeto, leia nosso [Código de Condu
         <td align="center">
             <a href="https://github.com/kaua-pt">
                 <img style="border-radius: 50%;" src="https://github.com/kaua-pt.png" width="150px;"/>
-                <h5 class="text-center">Kauã Vinícius</h5>
+                <h5 class="text-center">Kauã Vinícius ✠ </h5>
             </a>
         </td>
         <td align="center">
@@ -248,6 +260,8 @@ Distributed under the MIT License. See [LICENSE](https://github.com/fga-eps-mds/
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/fga-eps-mds/2022-2-FGAtlas.svg?style=for-the-badge
 [issues-url]: https://github.com/fga-eps-mds/2022-2-FGAtlas/issues
+[maintainability-shield]: https://img.shields.io/codeclimate/maintainability-percentage/fga-eps-mds/2022-2-FGAtlas?style=for-the-badge
+[maintainability-url]: https://codeclimate.com/github/fga-eps-mds/2022-2-FGAtlas/maintainability
 [license-shield]: https://img.shields.io/github/license/fga-eps-mds/2022-2-FGAtlas.svg?style=for-the-badge
 [license-url]: https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/LICENSE
 [product-screenshot]: images/screenshot.png

@@ -1,6 +1,40 @@
 import prisma from "../prismaClient";
 import places from "./utils";
 
+const buildAux: any = (matrizRef: String[]) => {
+  let contador = 0;
+  const matrizNum = [];
+  for (let h = 0; h < matrizRef.length; h += 1) {
+    if (matrizRef[h] === "agrupador") {
+      matrizNum.push(contador);
+      contador = 0;
+    }
+    if (matrizRef[h] === "linhaPar" || matrizRef[h] === "linhaImpar") {
+      contador += 1;
+    }
+  }
+  matrizNum.shift();
+  return matrizNum;
+};
+
+const buildRooms: any = (local: String[]) => {
+  const room = [];
+  for (let i = 0; i < local.length; i += 1) {
+    const roomS = [];
+    for (let j = 0; j < places.places.length; j += 1) {
+      if (local[i].includes(places.places[j])) {
+        roomS.push(places.places[j]);
+      }
+    }
+
+    if (roomS.length === 2 && roomS[1] === "LAB NEI 2") {
+      roomS.shift();
+    }
+    room.push(roomS);
+  }
+  return room;
+};
+
 // Jogar dados de matérias para o banco de dados
 const generateSubject: any = async (codigoNome: String[]) => {
   const subjects = Array.from(codigoNome).map((el) => ({
@@ -57,42 +91,19 @@ const generateClass = async (
 ) => {
   // Gerar código das matérias
   const newCodigonome = codigoNome.map((codigo) => codigo.split(" ")[0].trim());
+
   // Gerar professores das matérias
   const teacher = nome.map((prof) => prof.split("(")[0].trim());
 
   // Gerar salas das matérias, aqui, temos um caso especifico, no qual
   // se a matéria tiver dois locais, eles não podem ser em LAB NEI e LAB NEI 2
   // então há esse tratamento de dados
-  const room = [];
-  for (let i = 0; i < local.length; i += 1) {
-    const roomS = [];
-    for (let j = 0; j < places.places.length; j += 1) {
-      if (local[i].includes(places.places[j])) {
-        roomS.push(places.places[j]);
-      }
-    }
-
-    if (roomS.length === 2 && roomS[1] === "LAB NEI 2") {
-      roomS.shift();
-    }
-    room.push(roomS);
-  }
-
+  const room = buildRooms(local);
   // Criação de uma matriz auxiliar para parear as matérias as turmas
-  let contador = 0;
-  const matrizNum = [];
-  for (let h = 0; h < matrizRef.length; h += 1) {
-    if (matrizRef[h] === "agrupador") {
-      matrizNum.push(contador);
-      contador = 0;
-    }
-    if (matrizRef[h] === "linhaPar" || matrizRef[h] === "linhaImpar") {
-      contador += 1;
-    }
-  }
-  matrizNum.shift();
+  const matrizNum = buildAux(matrizRef);
 
   // Criação do array de matérias e do array de room-subject
+
   const secondR = [];
   const tudo = [];
   let helper = 0;
