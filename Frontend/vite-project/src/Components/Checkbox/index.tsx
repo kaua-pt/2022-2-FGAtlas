@@ -64,11 +64,13 @@ export default function CheckBox(infos: any) {
         <FormControlLabel 
         sx={style} 
         label={label} 
+        id='checkbox'
         control={
-            <Checkbox 
+            <Checkbox
+            id='checkbox-box' 
             sx={checkBoxStyle} 
             disabled={false}
-            checked={checked} 
+            checked={checked}
             onClick={() =>{
                 selectSubject(); selectBuilding();
             }}

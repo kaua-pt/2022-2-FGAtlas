@@ -45,12 +45,12 @@ export default function Map() {
           <Container>
             <SideBar>
               <p>Selecione a turma para ver no mapa:</p>
-                  <List>
+                  <List id='subject-info'>
                     {subjectsInfos.length != undefined ?
                         (
-                            subjectsInfos.map((info: any) => {
+                            subjectsInfos.map((info: any, i: number) => {
                                 return (
-                                    <SubjectInfos props={info}/>
+                                    <SubjectInfos  props={info} key={i}/>
                                 )
                             })
                         )
@@ -65,15 +65,18 @@ export default function Map() {
                   </List>
             </SideBar>
           <GoogleMap
+              id='map'
               mapContainerStyle={containerStyle}
               center={center}
               zoom={18}>
               {
                 subjectPlaceInfo.room != undefined ? 
                 subjectPlaceInfo.room.map((info: any) => {
-                  console.log(info)
                   return (
-                    <MarkerF position={{lat: info.latitude, lng: info.longitude}}/>
+                    <>
+                      <MarkerF position={{lat: info.latitude, lng: info.longitude}}/>
+                      <div id='marker'></div>
+                    </>
                     )
                 })
                 :
