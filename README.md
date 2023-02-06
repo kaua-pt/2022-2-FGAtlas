@@ -166,7 +166,7 @@ npm install
 4. Execute no terminal:
 
 ```
-npm run test
+npx cypress open
 ```
 
 ## :orange_book: Backlog do produto
