@@ -46,7 +46,7 @@ export default function MapBuilding() {
           <Container>
             <SideBar>
               <p>Selecione o prédio para ver no mapa:</p>
-                  <List>
+                  <List id='buildings'>
                     {buildingsInfo.length != undefined ?
                         (
                             buildingsInfo.map((info: any, i: number) => {
@@ -66,6 +66,7 @@ export default function MapBuilding() {
                   </List>
             </SideBar>
           <GoogleMap
+              id='map'
               mapContainerStyle={containerStyle}
               center={center}
               zoom={18}>
@@ -73,8 +74,11 @@ export default function MapBuilding() {
                 buildingPlaceInfo.length != undefined ? 
                 buildingPlaceInfo.map((info: any) => {
                     return (
+                      <>
                         <MarkerF position={{lat: info.latitude, lng: info.longitude}}/>
-                        )
+                        <div id='marker'></div>
+                      </>
+                    )
                   
                 })
                 :

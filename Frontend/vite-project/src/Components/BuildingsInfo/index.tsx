@@ -36,7 +36,7 @@ export default function BuildingsInfos(infos: any) {
     }
 
     return (
-        <style.Card>
+        <style.Card id='building-card'>
             <Box sx={{ width: '100%', height: 'auto', h1: { paddingLeft: '10px', fontSize: '16px' }}} >
                 <FormControlLabel
                     control={checked ? <TfiAngleDown /> : <TfiAngleRight />}

@@ -36,7 +36,7 @@ export default function SubjectInfos(infos: any) {
     }
 
     return (
-        <style.Card>
+        <style.Card id='card-subject'>
             <Box sx={{ width: '100%', height: 'auto', h1: { paddingLeft: '10px', fontSize: '16px' }}} >
                 <FormControlLabel
                     control={checked ? <TfiAngleDown /> : <TfiAngleRight />}
@@ -47,8 +47,8 @@ export default function SubjectInfos(infos: any) {
                 <Box sx={{width:'100%', display: 'flex'}}>
                     <Collapse in={checked} sx={{ width: '100%'}}>
                         {
-                            Class.map((infos: any) => {return (
-                                <style.Infos>
+                            Class.map((infos: any, i: number) => {return (
+                                <style.Infos key={i}>
                                     <FormGroup sx={{ width: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                         <CheckBox subjectName={props.name} subjectId={infos.id} style={formGroupSyle} label={undefined} />
                                     </FormGroup>
