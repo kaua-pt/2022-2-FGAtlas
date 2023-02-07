@@ -237,7 +237,7 @@ Foi feita uma [autoavalição dos membros na Release 1](https://github.com/fga-e
 
 ## :skull: Post Mortem
 
-O grupo fez um [Post Mortem](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Post%20Mortem%20MDS.pdf) para descrever um pouco da exepriência de cada membro dentro da matéria e durante o desenvolvimento da aplicação. O documento também é voltado para auxiliar futuros alunos da matéria de MDS.
+O grupo fez um [Post Mortem](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Post%20Mortem%20MDS.pdf) para descrever um pouco da experiência de cada membro dentro da matéria e durante o desenvolvimento da aplicação. O documento também é voltado para auxiliar futuros alunos da matéria de MDS.
 
 ## &#128511; Autores
 
