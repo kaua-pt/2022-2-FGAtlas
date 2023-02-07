@@ -25,10 +25,6 @@
     <a href="https://github.com/fga-eps-mds/2022-2-FGAtlas/issues">Recomendar Feature</a>
   </p>
 </div>
-<h4 align="center"> 
-	🚧 Em construção...  🚧
-</h4>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -60,16 +56,16 @@ FGAtlas é um projeto web que fornece a localização dos prédios e salas da FG
 <br />
 <div align="center">
   <a href="https://github.com">
-    <img src="Docs/Prints_FGAtlas/Print_Home.png" alt="Print1" width="410" height="310">
+    <img src="Docs/Prints_FGAtlas/Print_home_page_FGAtlas_refatorada.png" alt="Print1" width="410" height="310">
   </a>
   <a href="https://github.com">
     <img src="Docs/Prints_FGAtlas/Print_sobre_nos.png" alt="Print1" width="410" height="310">
   </a>
   <a href="https://github.com">
-    <img src="Docs/Prints_FGAtlas/Print_seleção_de_turmas.png" alt="Print1" width="410" height="310">
+    <img src="Docs/Prints_FGAtlas/Print_seleção_turma_refatorada.png" alt="Print1" width="410" height="310">
   </a>
   <a href="https://github.com">
-    <img src="Docs/Prints_FGAtlas/Print_mapa_FGA.png" alt="Print1" width="410" height="310">
+    <img src="Docs/Prints_FGAtlas/Print_seleção_prédio_refatorada.png" alt="Print1" width="410" height="310">
   </a>
  </div>
 
@@ -237,7 +233,11 @@ se deve comportar para um bom andamento do projeto, leia nosso [Código de Condu
 </center>
 
 ### Autoavaliação do grupo
-Foi feita uma [autoavalição dos membros](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Autoavalia%C3%A7%C3%A3o_dos_membros.md) em relação a contribuição com o projeto 
+Foi feita uma [autoavalição dos membros na Release 1](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Autoavalia%C3%A7%C3%A3o_dos_membros.md) em relação a contribuição com o projeto, assim como na [Release 2](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Autoavalia%C3%A7%C3%A3o%20dos%20membrosR2.md). É possível observar nos documentos que o grupo teve um desempenho bem equilibrado, o que contribuiu para um bom trabalho em equipe.
+
+## :skull: Post Mortem
+
+O grupo fez um [Post Mortem](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Post%20Mortem%20MDS.pdf) para descrever um pouco da exepriência de cada membro dentro da matéria e durante o desenvolvimento da aplicação. O documento também é voltado para auxiliar futuros alunos da matéria de MDS.
 
 ## &#128511; Autores
 
