@@ -5,6 +5,7 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
+[![maintainability][maintainability-shield]][maintainability-url]
 [![MIT License][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -24,10 +25,6 @@
     <a href="https://github.com/fga-eps-mds/2022-2-FGAtlas/issues">Recomendar Feature</a>
   </p>
 </div>
-<h4 align="center"> 
-	🚧 Em construção...  🚧
-</h4>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -59,16 +56,16 @@ FGAtlas é um projeto web que fornece a localização dos prédios e salas da FG
 <br />
 <div align="center">
   <a href="https://github.com">
-    <img src="Docs/Prints_FGAtlas/Print_Home.png" alt="Print1" width="410" height="310">
+    <img src="Docs/Prints_FGAtlas/Print_home_page_FGAtlas_refatorada.png" alt="Print1" width="410" height="310">
   </a>
   <a href="https://github.com">
     <img src="Docs/Prints_FGAtlas/Print_sobre_nos.png" alt="Print1" width="410" height="310">
   </a>
   <a href="https://github.com">
-    <img src="Docs/Prints_FGAtlas/Print_seleção_de_turmas.png" alt="Print1" width="410" height="310">
+    <img src="Docs/Prints_FGAtlas/Print_seleção_turma_refatorada.png" alt="Print1" width="410" height="310">
   </a>
   <a href="https://github.com">
-    <img src="Docs/Prints_FGAtlas/Print_mapa_FGA.png" alt="Print1" width="410" height="310">
+    <img src="Docs/Prints_FGAtlas/Print_seleção_prédio_refatorada.png" alt="Print1" width="410" height="310">
   </a>
  </div>
 
@@ -93,24 +90,13 @@ Para executar o backend:
 ```
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
-	
-2. 	Inicie o Postgres com o nome do banco de desenvolvimento
-```
-createdb FGAtlas_dev
-```
 
-3. 	Instale todas as dependências do repositório com:
+2. 	Instale todas as dependências do repositório com:
 ```
 npm install
 ```
-	
-4.	Faça as migrations do banco de dados com: 
 
-```
-npm run migrate_dev
-```
-
-5.	Inicie a aplicação com o comando:
+3.	Inicie a aplicação com o comando:
 
 ```
 npm run start
@@ -143,9 +129,9 @@ Para executar os testes do backend:
 ```
 git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
 ```
-2. 	Inicie o Postgres com o nome do banco de desenvolvimento
+2. 	Crie um novo banco de dados para testes com:
 ```
-createdb FGAtlas_dev
+dbcreate fgatlasdb_test
 ```
 
 3. 	Instale todas as dependências do repositório com:
@@ -155,6 +141,28 @@ npm install
 4. 	Inicie os testes com:
 ```
 npm run test
+```
+
+Para executar os testes do frontend:
+1. 	Clone o repositório
+```
+git clone https://github.com/fga-eps-mds/2022-2-FGAtlas.git
+```
+
+2. Vá para a pasta do vite
+```
+cd ./vite-project
+```
+
+3. Instale todas as dependências com:
+```
+npm install
+```
+
+4. Execute no terminal:
+
+```
+npx cypress open
 ```
 
 ## :orange_book: Backlog do produto
@@ -199,7 +207,7 @@ se deve comportar para um bom andamento do projeto, leia nosso [Código de Condu
         <td align="center">
             <a href="https://github.com/kaua-pt">
                 <img style="border-radius: 50%;" src="https://github.com/kaua-pt.png" width="150px;"/>
-                <h5 class="text-center">Kauã Vinícius</h5>
+                <h5 class="text-center">Kauã Vinícius ✠ </h5>
             </a>
         </td>
         <td align="center">
@@ -225,7 +233,11 @@ se deve comportar para um bom andamento do projeto, leia nosso [Código de Condu
 </center>
 
 ### Autoavaliação do grupo
-Foi feita uma [autoavalição dos membros](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Autoavalia%C3%A7%C3%A3o_dos_membros.md) em relação a contribuição com o projeto 
+Foi feita uma [autoavalição dos membros na Release 1](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Autoavalia%C3%A7%C3%A3o_dos_membros.md) em relação a contribuição com o projeto, assim como na [Release 2](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Autoavalia%C3%A7%C3%A3o%20dos%20membrosR2.md). É possível observar nos documentos que o grupo teve um desempenho bem equilibrado, o que contribuiu para um bom trabalho em equipe.
+
+## :skull: Post Mortem
+
+O grupo fez um [Post Mortem](https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/Docs/Post%20Mortem%20MDS.pdf) para descrever um pouco da experiência de cada membro dentro da matéria e durante o desenvolvimento da aplicação. O documento também é voltado para auxiliar futuros alunos da matéria de MDS.
 
 ## &#128511; Autores
 
@@ -248,6 +260,8 @@ Distributed under the MIT License. See [LICENSE](https://github.com/fga-eps-mds/
 [stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/fga-eps-mds/2022-2-FGAtlas.svg?style=for-the-badge
 [issues-url]: https://github.com/fga-eps-mds/2022-2-FGAtlas/issues
+[maintainability-shield]: https://img.shields.io/codeclimate/maintainability-percentage/fga-eps-mds/2022-2-FGAtlas?style=for-the-badge
+[maintainability-url]: https://codeclimate.com/github/fga-eps-mds/2022-2-FGAtlas/maintainability
 [license-shield]: https://img.shields.io/github/license/fga-eps-mds/2022-2-FGAtlas.svg?style=for-the-badge
 [license-url]: https://github.com/fga-eps-mds/2022-2-FGAtlas/blob/main/LICENSE
 [product-screenshot]: images/screenshot.png

@@ -3,37 +3,60 @@ import { useContext, useEffect, useState } from "react";
 import { FgAtlasContexts } from "../../Contexts";
 
 export default function CheckBox(infos: any) {
-    const { label, style, subjectId, subjectName } = infos;
+    const { label, style, subjectId, subjectName, buildingName, buildingId } = infos;
+
+    const { 
+        setSubjectChoosed, 
+        subjectChoosed, 
+        getSubjectLocalization,
+        setSubjectPlaceInfo,
+        buildingChoosed,
+        setBuildingChoosed,
+        getBuildingLocalization,
+        setBuildingPlaceInfo,
+     } = useContext(FgAtlasContexts);
     const [ checked, setChecked ] = useState(false);
-    const [ disableCheckbox, setDisableCheckbox ] = useState(false);
-    const { setSubjectChoosed, subjectChoosed } = useContext(FgAtlasContexts);
 
     const checkBoxStyle = {
-        color: '#E9932E',
+        color: '#black',
         '&.Mui-checked': {
-          color: '#E9932E',
+          color: 'green',
         },
         '&.Mui-disabled': {
             color: 'grey'
         }
     }
-
     useEffect(() => {
-        if(subjectChoosed.name != null) {
-            setDisableCheckbox(true);
+        if(subjectChoosed.id == subjectId && buildingId == undefined) {   
+            setChecked(true);
+        } else if( buildingChoosed.name == buildingId && subjectId == undefined) {
+            setChecked(true);
+        }else {
+            setChecked(false);
         }
-        else {
-            setDisableCheckbox(false);
-        }
-    }, [subjectChoosed])
+    },[subjectChoosed.id, buildingChoosed.name]);
 
-    function checkCheckBox() {
-        setChecked(!checked)
-        if(!checked) {
-            setSubjectChoosed({name: subjectName, id: subjectId});
-        }
-        else {
+    function selectSubject() {
+        if(subjectChoosed.id == subjectId) {
             setSubjectChoosed({name: null, id: null});
+            setChecked(false);
+            setSubjectPlaceInfo({});
+        } else {
+            setSubjectChoosed({name: subjectName, id: subjectId});
+            getSubjectLocalization(subjectId);
+        }
+    }
+
+    function selectBuilding() {
+        console.log(buildingChoosed)
+        if(buildingChoosed.name == buildingId) {
+            setBuildingChoosed({name: null});
+            setChecked(false);
+            setBuildingPlaceInfo({});
+        } else {
+            setBuildingChoosed({name: buildingId});
+            setBuildingPlaceInfo({});
+            getBuildingLocalization(buildingId);
         }
     }
 
@@ -41,13 +64,15 @@ export default function CheckBox(infos: any) {
         <FormControlLabel 
         sx={style} 
         label={label} 
+        id='checkbox'
         control={
-            <Checkbox 
+            <Checkbox
+            id='checkbox-box' 
             sx={checkBoxStyle} 
-            disabled={subjectChoosed.id != subjectId && disableCheckbox ? true : false}
-            defaultChecked={false} 
+            disabled={false}
+            checked={checked}
             onClick={() =>{
-                checkCheckBox()
+                selectSubject(); selectBuilding();
             }}
             />} 
         />

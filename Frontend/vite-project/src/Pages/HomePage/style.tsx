@@ -54,7 +54,7 @@ const Left = styled.div`
         background-color: orange;
         position: relative;
         left: 50%;
-        top: 18%;
+        top: 12%;
         z-index: 2;
         background: url(${fga})  no-repeat ;
         background-position: center;
@@ -131,6 +131,7 @@ const Footer = styled.div `
         display: flex;
         flex-direction: column;
         padding-left: 20px;
+        padding-top: 80px;
 
         h1 {
             color: white;
